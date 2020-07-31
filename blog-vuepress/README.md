@@ -4,16 +4,16 @@
 
 ## 简介
 
-地址：[https://biaochenxuying.cn/](https://biaochenxuying.cn/)
+地址：[https://biaochenxuying.github.io/blog](https://biaochenxuying.github.io/blog)
 
-> **芳华正茂始少年，时光正好，未来可期 ！**
+> 芳华正茂始少年，时光正好，未来可期 ！
 
 技术为主，读书笔记、随笔、理财为辅，做个终身学习者。
 
 收获不止技术，还有财富。
 
 
-<!-- ## 分类
+## 分类
 
 - [JavaScript 数据结构与算法之美](https://github.com/biaochenxuying/blog/projects/10)
 - [JavaScript](https://github.com/biaochenxuying/blog/projects/4)
@@ -26,59 +26,25 @@
 - [硬核面试专题](https://github.com/biaochenxuying/blog/projects/12)
 - [前端工程师成长之路](https://github.com/biaochenxuying/blog/projects/14)
 - [半小时硬核理财入门](https://github.com/biaochenxuying/blog/projects/9)
-- [随笔](https://github.com/biaochenxuying/blog/projects/5) -->
-
-## 专栏
-
-- [**掘金专栏**](https://juejin.im/user/591d6b4d0ce463006926ae40)
-
-<!-- ## 服务器
-
-优惠消息：[阿里服务器低于 1 折、89/年、229/3年，比学生机还便宜](https://www.aliyun.com/minisite/goods?userCode=g6evk7n0&share_source=copy_link)，通过些链接购买就是最便宜的。
-
-笔者觉得每个开发者都应该拥有自己的网站和服务器，这可是很酷的事情，学习 Linux、跑跑脚本、建站、搭博客、搭建个项目给面试官看也香，对找工作和面试都加分，还可以熟悉技术栈。
-
-不知道如何使用服务器？可以看看我写的文章：[服务器小白的我,是如何将 node+mongodb 项目部署在服务器上并进行性能优化的](https://juejin.im/post/5bfb4ce46fb9a049a81efd2e) -->
-
+- [随笔](https://github.com/biaochenxuying/blog/projects/5)
 
 ## 文章
 
-
-> **文章版权为夜尽天明所有，未经允许，不得转载；如要转载文章，请联系笔者**。
-
-#### | Vue3.x
-
-- [1. 通过10个实例小练习，快速入门熟练 Vue3.0 核心新特性](https://github.com/biaochenxuying/blog/issues/63)
-
 #### | 软技能
 
-- [1. **GitHub 上能挖矿的神仙技巧 - 如何发现优秀开源项目**](https://github.com/biaochenxuying/blog/issues/45)
+- [1. GitHub 上能挖矿的神仙技巧 - 如何发现优秀开源项目](https://github.com/biaochenxuying/blog/issues/45)
 - [2. GitHub 吸星大法 - 一年收获 2000+ Star 的心得](https://github.com/biaochenxuying/blog/issues/49)
-- [3. 提升 google 使用效率的 30个快捷键、16个扩展插件与 11个前端调试方法](https://github.com/biaochenxuying/blog/issues/58)
-- [4. **Github 近 200k Star 的计算机学习资源，在家也能成为大牛！**](https://github.com/biaochenxuying/blog/issues/62)
-- [5. 推荐一个程序员必备网站之一：Dev Hints ，非常实用！](https://github.com/biaochenxuying/blog/issues/70)
 
 #### | 前端工程师的成长之路
 
-- [1. 我的 2019 年 - 当勤精进，但念无常，何以解忧，唯有暴富](https://github.com/biaochenxuying/blog/issues/55)
-- [2. 前端工程师的 2019 年年终总结 - 真香篇](https://github.com/biaochenxuying/blog/issues/54)
-- [3. 2018 年，我的本命年 - 前端工作师的年终总结](https://github.com/biaochenxuying/blog/issues/19)
-- [4. 前端架构师亲述：前端工程师成长之路的 N 问 及 回答](https://github.com/biaochenxuying/blog/issues/33)
+- [1. 2018 年，我的本命年 - 前端工作师的年终总结](https://github.com/biaochenxuying/blog/issues/19)
+- [2. 前端架构师亲述：前端工程师成长之路的 N 问 及 回答](https://github.com/biaochenxuying/blog/issues/33)
 
-#### | 安全
-
-- [1. 浏览器指纹：原来我们一直被互联网巨头监视，隐私在网上裸奔、无处可藏](https://github.com/biaochenxuying/blog/issues/60)
-
-### | 译文
-
-- [1. 惊艳！可视化的 js：动态图演示 Promises & Async/Await 的过程！](https://github.com/biaochenxuying/blog/issues/64)
-- [2. 惊艳！可视化的 js：动态图演示-事件循环 Event Loop](https://github.com/biaochenxuying/blog/issues/65)
-- [3. 惊艳！小姐姐用动画图解 Git 的 10 大命令，这也太秀了吧！](https://github.com/biaochenxuying/blog/issues/67)
 
 #### | 随笔
 
-- [1. **程序员如何优雅的挣零花钱！这里提供 9 种思路打开你挣钱的世界**](https://github.com/biaochenxuying/blog/issues/59)
-- [2. 程序员不止眼前的逻辑和代码，还应有健康的体魄和精气神](https://github.com/biaochenxuying/blog/issues/6)
+- [1. 程序员不止眼前的逻辑和代码，还应有健康的体魄和精气神](https://github.com/biaochenxuying/blog/issues/6)
+
 
 
 #### | JavaScript 数据结构与算法之美
@@ -93,13 +59,13 @@
 - [8. JavaScript 数据结构与算法之美 - 归并排序、快速排序、希尔排序、堆排序](https://github.com/biaochenxuying/blog/issues/40) 
 - [9. JavaScript 数据结构与算法之美 - 计数排序、桶排序、基数排序](https://github.com/biaochenxuying/blog/issues/41) 
 - [10. JavaScript 数据结构与算法之美 - 十大经典排序算法汇总](https://github.com/biaochenxuying/blog/issues/42) 
-- [11. JavaScript 数据结构与算法之美 - **GitHub 上 170K+ Star 的前端学习的数据结构与算法项目**](https://github.com/biaochenxuying/blog/issues/43)
+- [11. JavaScript 数据结构与算法之美 - 强烈推荐 GitHub 上值得前端学习的数据结构与算法项目](https://github.com/biaochenxuying/blog/issues/43)
 
 
 #### | 前端硬核面试专题
 
 - [1. fe-interview：HTML + CSS + JS + ES6 + Webpack + Vue + React + Node + HTTPS + 数据结构与算法 + Git](https://github.com/biaochenxuying/blog/blob/master/interview/fe-interview.md)
-- [2. **GitHub 上 100K+ Star 的前端面试开源项目汇总（进大厂必备）**](https://github.com/biaochenxuying/blog/issues/47)
+- [2. 重磅：硬核前端面试开源项目汇总（进大厂必备）](https://github.com/biaochenxuying/blog/issues/47)
 - [3. 2019 前端秋季社招面试经历总结（二年多经验）](https://github.com/biaochenxuying/blog/issues/48)
 
 
@@ -112,7 +78,7 @@
 - [5. 基于 vue+mint-ui 的 mobile-h5 的项目说明](https://github.com/biaochenxuying/blog/issues/4)
 - [6. 复杂表格设计数据格式](https://github.com/biaochenxuying/blog/issues/7)
 
-#### | React.js
+#### | React.js 
 
 
 - [1. github 授权登录教程与如何设计第三方授权登录的用户表](https://github.com/biaochenxuying/blog/issues/23)
@@ -141,11 +107,7 @@
 - [11. WebKit 技术内幕之浏览器与 WebKit 内核](https://github.com/biaochenxuying/blog/issues/10)
 
 
-#### | Puppeteer & 自动化
-
-- [1. Puppeteer 自动化的性能优化与执行速度提升](https://github.com/biaochenxuying/blog/issues/69)
-
-#### | Node.js
+#### | Node.js 
 
 - [1. 基于 node express mongodb 的 blog-node 项目文档说明](https://github.com/biaochenxuying/blog/issues/17)
 - [2. 服务器小白的我，是如何将 node+mongodb 项目部署在服务器上并进行性能优化的](https://github.com/biaochenxuying/blog/issues/18)
@@ -155,44 +117,39 @@
 
 - [1. 一次网站的性能优化之路 -- 天下武功，唯快不破](https://github.com/biaochenxuying/blog/issues/24)
 
-#### | VuePress & GitBook
-
-- [1. 借助 VuePress 和 GitBook ，10 分钟即可免费部署你的静态博客网站](https://github.com/biaochenxuying/blog/issues/53)
 
 #### | 半小时硬核理财入门
 
 - [1. 用钱生钱，从掌握金钱的规律开始](https://github.com/biaochenxuying/blog/issues/26)
-- 精彩待续 ...
+- 精彩待续 ... 
 
 #### | 学习资源
 
-- [1. **150+ 本技术类常用电子书开源了，包括 前端、后端、数据结构与算法、计算机基础、设计模式、数据库等书籍**](https://github.com/biaochenxuying/awesome-books)
-- [2. 极客时间上的《TypeScript 开发实战》课程资源，包含课件、思维导图、课程源代码](https://github.com/biaochenxuying/blog/tree/master/typescript-in-action)
-- [3. 视频资料分享 - Vue、React、Node、MongoDB 全栈、打造商城系统、实战项目汇总](https://mp.weixin.qq.com/s/7f767Y5FHM9i2_GeUSz-Iw)
+- [极客时间上的《TypeScript 开发实战》课程资源，包含课件、思维导图、课程源代码](https://github.com/biaochenxuying/blog/tree/master/typescript-in-action)
 
 
-  
 ## 计划
 
 以下是笔者往后的计划，计划执行的先后顺序，视情况而定。
 
 #### | webpack 原理及源码分析
 
-- 精彩待续 ...
+- 精彩待续 ... 
   
    
 #### | Vue 原理及源码分析
 
-- 精彩待续 ...
+- 精彩待续 ... 
   
 
 #### | TypeScript 入门到熟练
 
-- 精彩待续 ...
+- [1. Vue + TypeScript + Element 搭建简洁时尚的博客网站及踩坑记](https://github.com/biaochenxuying/blog/issues/25)
+- 精彩待续 ... 
   
 #### | 小程序入门到熟练
 
-- 精彩待续 ...
+- 精彩待续 ... 
   
 <!--   
 #### | Flutter 入门到熟练
@@ -205,64 +162,51 @@
 - 精彩待续 ... 
 
 
+## 社区
+
+- [**GitHub**](https://github.com/biaochenxuying/blog)
+- [**掘金**](https://juejin.im/user/591d6b4d0ce463006926ae40)
+  
 
 ## 撩我
 
+
+微信：**CB834301747**，加我时的验证申请，请输入暗号哦。
+
+暗号是：**夜尽天明** ，不然不给通过哦（非诚勿扰）。
+
 邮箱：**2993806084#qq.com** ，将 **#** 号换成 **@** 即可。
 
-微信：**CB834301747**，加我时的验证申请，请输入暗号哦，暗号是：**夜尽天明**（非诚勿扰）。
-
-有什么问题，直接微信我，或者发邮件到我邮箱就可以，有必要的，我都会给您回复的。
+有什么问题，直接发邮件到我邮箱就可以，有必要的，我都会给您回复邮件的。
 
 <div align="center">
 
-
-[![](https://upload-images.jianshu.io/upload_images/12890819-f3b3fedec1c5dc8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](https://github.com/biaochenxuying/awesome-books)
-
-[https://github.com/biaochenxuying/awesome-books](https://github.com/biaochenxuying/awesome-books)
+![](https://upload-images.jianshu.io/upload_images/12890819-0c42f7a1976fee04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/245)
+![](https://upload-images.jianshu.io/upload_images/12890819-ffab7bd24d08c00d.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/250)
 
 </div>
 
-<div align="center">
+> **江山父老能容我，不使人间造孽钱**。
 
-![](https://upload-images.jianshu.io/upload_images/12890819-50b85ba33dd7ba90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+> 文章版权为夜尽天明所有，未经允许，不得转载；如要转载文章，请联系笔者。
 
+如果你觉得该项目不错，或者对你有所帮助，点个 Star 、或者真心赞赏一下 都是对我最大的鼓励，我会更有动力维护好该项目。
 
-<!-- ![](https://upload-images.jianshu.io/upload_images/12890819-0c42f7a1976fee04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/265) -->
-
-</div>
-
-
-<!-- ## BB
+## BB
 
 
 #### 技术以内
 
 这里是笔者平时 BB 大前端技术的地方。
 
-<div align="center">
-
 ![全栈修炼](https://upload-images.jianshu.io/upload_images/12890819-9399d149e09f638e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000)
 
-</div> -->
 
-<!-- ## 打赏
-
-> **江山父老能容我，不使人间造孽钱**。
-
-如果你感觉有收获，欢迎给我点个 Star 、或者真心赞赏一下，都是对我最大的鼓励，我会更有动力输出有价值的内容。
-
-<div align="center">
-
-![](https://upload-images.jianshu.io/upload_images/12890819-ffab7bd24d08c00d.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/250)
-
-</div> -->
-
-<!-- #### 技术以外
+#### 技术以外
 
 技术以外的 BB。
 
 闲暇之余，技术以外的世界同样精彩。
 
 ![硬核杂货铺](https://upload-images.jianshu.io/upload_images/12890819-7ed698c2818cdc3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000)
- -->
+

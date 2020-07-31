@@ -14,7 +14,14 @@
 
 **为什么利用多个域名来存储网站资源会更有效 ？**
 
-确保用户在不同地区能用最快的速度打开网站，其中某个域名崩溃用户也能通过其他域名访问网站。
+[利用多个域名来存储网站资源](https://www.jianshu.com/p/4cf3b6d6b50a)
+
+- 确保用户在不同地区能用最快的速度打开网站，其中某个域名崩溃用户也能通过其他域名访问网站。
+- CDN 缓存更方便。简单来说，CDN 主要用来使用户就近获取资源。
+- 突破浏览器并发限制。同一时间针对同一域名下的请求有一定数量限制，超过限制数目的请求会被阻塞。大多数浏览器的并发数量都控制在6以内。有些资源的请求时间很长，因而会阻塞其他资源的请求。因此，对于一些静态资源，如果放到不同的域名下面就能实现与其他资源的并发请求。
+- Cookieless, 节省带宽，尤其是上行带宽 一般比下行要慢。
+- 对于 UGC 的内容和主站隔离，防止不必要的安全问题。
+- 数据做了划分，甚至切到了不同的物理集群，通过子域名来分流比较省事.  这个可能被用的不多。
 
 ---
 
@@ -146,6 +153,14 @@ repaint 就是重绘，reflow 就是回流。
 - 牺牲平滑度满足性能：动画精度太强，会造成更多次的 repaint/reflow，牺牲精度，能满足性能的损耗，获取性能和平滑度的平衡。
 - 避免使用 table 进行布局：table 的每个元素的大小以及内容的改动，都会导致整个 table 进行重新计算，造成大幅度的 repaint 或者 reflow。改用 div 则可以进行针对性的 repaint 和避免不必要的 reflow。
 - 避免在 CSS 中使用运算式：学习 CSS 的时候就知道，这个应该避免，不应该加深到这一层再去了解，因为这个的后果确实非常严重，一旦存在动画性的 repaint/reflow，那么每一帧动画都会进行计算，性能消耗不容小觑。
+
+
+参考文章：[你真的了解回流和重绘吗](https://segmentfault.com/a/1190000017329980)
+
+---
+
+- [我终于理解了伪类和伪元素](https://www.jianshu.com/p/996d021bced3)
+
 
 ---
 
@@ -688,40 +703,7 @@ inline 就像塑料袋，内容怎么样，就长得怎么样；block 就像盒�
 
 ---
 
-**canvas 与 svg 的区别 ？**
 
-- Canvas 是基于像素的即时模式图形系统，最适合较小的表面或较大数量的对象，Canvas 不支持鼠标键盘等事件。
-- SVG 是基于形状的保留模式图形系统，更加适合较大的表面或较小数量的对象。
-- Canvas 和 SVG 在修改方式上还存在着不同。绘制 Canvas 对象后，不能使用脚本和 CSS 对它进行修改。因为 SVG 对象是文档对象模型的一部分，所以可以随时使用脚本和 CSS 修改它们。
-
-现在对两种技术做对比归纳如下：
-
-Canvas
-
-1) 依赖分辨率
-2) 不支持事件处理器
-3) 弱的文本渲染能力
-4) 能够以 .png 或 .jpg 格式保存结果图像
-5) 最适合图像密集型的游戏，其中的许多对象会被频繁重绘
-
-SVG
-
-1) 不依赖分辨率
-2) 支持事件处理器
-3) 最适合带有大型渲染区域的应用程序（比如谷歌地图）
-4) 复杂度高会减慢渲染速度（任何过度使用 DOM 的应用都不快）
-5) 不适合游戏应用
-
----
-
-**px 和 em 的区别 ？**
-
-- px 像素（Pixel）。相对长度单位。像素 px 是相对于显示器屏幕分辨率而言的。(引自CSS2.0手册)
-- em 是相对长度单位。相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。(引自CSS2.0手册)
-- 任意浏览器的默认字体高都是 16px。所有未经调整的浏览器都符合: 1em = 16px。
-那么12px = 0.75em,10px = 0.625em。为了简化 font-size 的换算，需要在 css 中的 body 选择器中声明 Font-size = 62.5%，这就使 em 值变为 16px*62.5% = 10px, 这样 12px = 1.2em, 10px = 1em, 也就是说只需要将你的原来的 px 数值除以 10，然后换上 em 作为单位就行了。
-
----
 
 **会不会用 ps 扣图，png、jpg、gif 这些图片格式解释一下，分别什么时候用。如何优化图像、图像格式的区别 ?**
 
@@ -736,7 +718,7 @@ PNG 的特性
 - 能在保证最不失真的情况下尽可能压缩图像文件的大小。
 - PNG 用来存储灰度图像时，灰度图像的深度可多到 16 位，存储彩色图像时，彩色图像的深度可多到 48 位，并且还可存储多到 16 位的 α 通道数据。
 - 对于需要高保真的较复杂的图像，PNG 虽然能无损压缩，但图片文件较大，不适合应用在 Web 页面上。
-- 另外还有一个原则就是用于页面结构的基本视觉元素，如容器的背景、按钮、导航的背景等应该尽量用 PNG 格式进行存储，这样才能更好的保证设计品质。而其他一些内容元素，如广告 Banner、商品图片 等对质量要求不是特别苛刻的，则可以用 JPG 去进行存储从而降低文件大小。
+- 另外还有一个原则就是用于页面结构的基本视觉元素，**如容器的背景、按钮、导航的背景等应该尽量用 PNG 格式进行存储，这样才能更好的保证设计品质**。而其他一些内容元素，**如广告 Banner、商品图片 等对质量要求不是特别苛刻的，则可以用 JPG 去进行存储从而降低文件大小**。
 
 GIF格式特点
  
@@ -799,7 +781,7 @@ CSS 的引入方式最常用的有三种
 诚然 CSS Sprites 是如此的强大，但是也存在一些不可忽视的缺点，如下：
 
 - 在图片合并的时候，你要把多张图片有序的合理的合并成一张图片，还要留好足够的空间，防止板块内不不必要的背景；这些还好，最痛苦的是在宽屏，高分辨率的屏幕下的自适应页面，你的图片如果不够宽，很容背景断裂；
-- CSS Sprites 在开发的时候比较麻烦，你要通过 photoshop 或其他工具测量计算每一个背景单元的精确位是针线活，没什么难度，但是很繁琐；幸好腾讯的鬼哥用 RIA 开发了一个 CSS Sprites 样式生成工具，虽然些使用上的不灵活，但是已经比 photoshop 测量来的方便多了，而且样式直接生成，复制，拷贝就 OK！ 
+- CSS Sprites 在开发的时候比较麻烦，你要通过 photoshop 或其他工具测量计算每一个背景单元的精确位是针线活，没什么难度，但是很繁琐；
 - CSS Sprites 在维护的时候比较麻烦，如果页面背景有少许改动，一般就要改这张合并的图片，无需改的好不要动，这样避免改动更多的 css，如果在原来的地方放不下，又只能（最好）往下加图片，这样图片的字加了，还要改动 css。
 
 CSS Sprites 非常值得学习和应用，特别是页面有一堆 ico（图标）。总之很多时候大家要权衡一下再决定是不是应用 CSS Sprites。
@@ -821,7 +803,7 @@ CSS Sprites 非常值得学习和应用，特别是页面有一堆 ico（图标�
 - 优先级就近原则，样式定义最近者为准
 - 载入样式以最后载入的定位为准
 - 优先级为 !important > [ id > class > tag ]
-- Important 比内联优先级高
+- !mportant 比内联优先级高
 
 ---
 
@@ -881,7 +863,7 @@ border padding margin width height
 - :root 选择文档的根元素，等同于 html 元素
 - :empty 选择没有子元素的元素
 - :target 选取当前活动的目标元素
-- :not(selector) 选择除 selector 元素意外的元素
+- :not(selector) 选择除 selector 元素以外的元素
 - :enabled 选择可用的表单元素
 - :disabled 选择禁用的表单元素
 - :checked 选择被选中的表单元素
@@ -998,21 +980,6 @@ body {
 
 ---
 
-**collapse、overflow、float 这些特性相互叠加后会怎么样？**
-
-margin collapse 我觉得这里的意思应该是 Collapsing margins，即外边距折叠，指的是毗邻的两个或多个外边距 (margin) 会合并成一个外边距。
-
-其中所说的 margin 毗邻，可以归结为以下两点：
-
-- 这两个或多个外边距没有被非空内容、padding、border 或 clear 分隔开。
-- 这些 margin 都处于普通流中。
-
-1. 两个或多个毗邻的普通流中的块元素垂直方向上的 margin 会折叠。
-2. 浮动元素、inline-block 元素、绝对定位元素的 margin 不会和垂直方向上其他元素的 margin 折叠.
-3. 创建了块级格式化上下文的元素，不和它的子元素发生 margin 折叠
-
----
-
 **请解释一下CSS3 的 Flexbox（弹性盒布局模型），以及适用场景 ？**
 
 http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
@@ -1086,7 +1053,34 @@ W3C CSS 2.1 规范中的一个概念，它是一个独立容器，决定了元�
 
 ---
 
-**svg 与 convas 的区别 ？**
+
+**canvas 与 svg 的区别 ？**
+
+- Canvas 是基于像素的即时模式图形系统，最适合较小的表面或较大数量的对象，Canvas 不支持鼠标键盘等事件。
+- SVG 是基于形状的保留模式图形系统，更加适合较大的表面或较小数量的对象。
+- Canvas 和 SVG 在修改方式上还存在着不同。绘制 Canvas 对象后，不能使用脚本和 CSS 对它进行修改。因为 SVG 对象是文档对象模型的一部分，所以可以随时使用脚本和 CSS 修改它们。
+
+现在对两种技术做对比归纳如下：
+
+Canvas
+
+1) 依赖分辨率
+2) 不支持事件处理器
+3) 弱的文本渲染能力
+4) 能够以 .png 或 .jpg 格式保存结果图像
+5) 最适合图像密集型的游戏，其中的许多对象会被频繁重绘
+
+SVG
+
+1) 不依赖分辨率
+2) 支持事件处理器
+3) 最适合带有大型渲染区域的应用程序（比如谷歌地图）
+4) 复杂度高会减慢渲染速度（任何过度使用 DOM 的应用都不快）
+5) 不适合游戏应用
+
+---
+
+**svg 与 canvas 的区别 ？**
 
 - svg 绘制出来的每一个图形的元素都是独立的 DOM 节点，能够方便的绑定事件或用来修改，而 canvas 输出的是一整幅画布；
 - svg 输出的图形是矢量图形，后期可以修改参数来自由放大缩小，不会是真和锯齿。而 canvas 输出标量画布，就像一张图片一样，放大会失真或者锯齿。
@@ -1102,7 +1096,7 @@ W3C CSS 2.1 规范中的一个概念，它是一个独立容器，决定了元�
 - 上下相连的两个盒子之间的空白，需要相互抵消时。
 如 15px + 20px 的 margin，将得到 20px 的空白。
 
-何时应当时用 padding
+何时应当使用 padding
 
 - 需要在 border 内测添加空白时。
 - 空白处需要背景（色）时。
@@ -1261,16 +1255,6 @@ p {
 
 ---
 
-**png、jpg、gif 这些图片格式解释一下，分别什么时候用。有没有了解过webp ？**
-
-- png 是便携式网络图片（Portable Network Graphics）是一种无损数据压缩位图文件格式。
-优点是：压缩比高，色彩好。 大多数地方都可以用。
-- jpg 是一种针对相片使用的一种失真压缩方法，是一种破坏性的压缩，在色调及颜色平滑变化做的不错。在 www 上，被用来储存和传输照片的格式。
-- gif 是一种位图文件格式，以 8 位色重现真色彩的图像。可以实现动画效果。
-- webp 格式是谷歌在 2010 年推出的图片格式，压缩率只有 jpg 的 2/3，大小比 png 小了 45%。缺点是压缩的时间更久了，兼容性不好，目前谷歌和 opera 支持。
-
----
-
 **style 标签写在 body 后与 body 前有什么区别？**
 
 页面加载自上而下，当然是先加载样式。
@@ -1406,14 +1390,15 @@ html,body{
 }
 ```
 
-第二种方法，我利用的是创建一个新的 BFC（块级格式化上下文）来防止文字环绕的原理来实现的。
+这个方法，我利用的是创建一个新的 BFC（块级格式化上下文）来防止文字环绕的原理来实现的。
 
 BFC 就是一个相对独立的布局环境，它内部元素的布局不受外面布局的影响。
 它可以通过以下任何一种方式来创建： 
 
 - float 的值不为 none 
 - position 的值不为 static 或者 relative 
-- display 的值为 table-cell , table-caption , inline-block , flex , 或者 inline-flex 中的其中一个 overflow 的值不为 visible
+- display 的值为 table-cell , table-caption , inline-block , flex , 或者 inline-flex 中的其中一个 
+- overflow 的值不为 visible
 
 关于 BFC，在 w3c 里是这样描述的：在 BFC 中，每个盒子的左外边框紧挨着 包含块 的 左边框 （从右到左的格式化时，则为右边框紧挨）。
 即使在浮动里也是这样的（尽管一个包含块的边框会因为浮动而萎缩），除非这个包含块的内部创建了一个新的 BFC。
@@ -1465,7 +1450,7 @@ BFC 就是一个相对独立的布局环境，它内部元素的布局不受外�
 
 1. em 的值并不是固定的；
 2. em 会继承父级元素的字体大小。
-3. em 是相对长度单位。相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。
+3. em 是相对长度单位。当前对行内文本的字体尺寸未被人为设置，相对于当前对象内文本的字体尺寸。如则相对于浏览器的默认字体尺寸。
 4. 任意浏览器的默认字体高都是 16px。
    
 所有未经调整的浏览器一般都符合: 1em = 16px。那么 12px = 0.75em，10px = 0.625em。
@@ -1515,6 +1500,54 @@ vh / vw 与 % 区别
 - 降级（功能衰减）意味着往回看；而渐进增强则意味着朝前看，同时保证其根基处于安全地带。
 
 ---
+**width 和 height 的百分比是相对谁讲的 ？margin 和 padding 呢？**
+
+- width 是相对于直接父元素的 width
+- height 是相对于直接父元素的 height
+- padding 是相对于直接父元素的 width
+- margin 是相对于直接父元素的 margin
+
+```
+<style>
+    #wrapper {
+        width: 500px;
+        height: 800px;
+        background-color: #ccc;
+    }
+    .parent {
+        width: 300px;
+        height: 400px;
+        background-color: yellow;
+    }
+    .son {
+        /* 90*40 */
+        width: 30%;
+        height: 10%;
+        /* 30 30 */
+        padding-left: 10%;
+        margin-left: 10%;
+        background-color: green;
+    }
+</style>
+<div id="wrapper">
+    <div class="parent">
+        <div class="son">
+        </div>
+    </div>
+</div>
+```
+
+相关文章：
+
+- [transform，transition，animation，keyframes区别](https://segmentfault.com/a/1190000012698032)
+- [width 和 height 的百分比是相对谁讲的 ？margin 和 padding 呢？](https://www.jianshu.com/p/075839c8e2f2)
+- [彻底搞懂 CSS 层叠上下文、层叠等级、层叠顺序、z-index](https://juejin.im/post/5b876f86518825431079ddd6)
+
+
+---
+
+
+
 
 ## 4. JavaScript 
 
@@ -1524,6 +1557,168 @@ vh / vw 与 % 区别
 - Gecko 内核：火狐，FF，MozillaSuite / SeaMonkey 等
 - Presto 内核：Opera7 及以上。[Opera 内核原为：Presto，现为：Blink]
 - Webkit 内核：Safari，Chrome 等。 [ Chrome 的：Blink（WebKit 的分支）]
+
+---
+
+**try/catch 无法捕获 promise.reject 的问题**
+
+try..catch 结构，它只能是同步的，无法用于异步代码模式。
+
+https://segmentfault.com/q/1010000014905440
+
+---
+
+**error 事件的事件处理程序**
+
+https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onerror
+
+---
+
+**一个简易版的 Function.prototype.bind 实现**
+
+```js
+Function.prototype.bind = function (context) {
+    var self = this;
+    return function () {
+        return self.apply(context, arguments);
+    };
+};
+
+var obj = {
+    name: '前端架构师'
+};
+var func = function () {
+    console.log(this.name);
+}.bind(obj);
+func();
+```
+
+- [【JavaScript】Function.prototype.bind 实现原理](https://blog.csdn.net/w390058785/article/details/83185847)
+
+
+---
+
+**call、apply、bind**
+
+1. 怎么利用 call、apply 来求一个数组中最大或者最小值 ?
+2. 如何利用 call、apply 来做继承 ?
+3. apply、call、bind 的区别和主要应用场景 ?
+
+- call 跟 apply 的用法几乎一样，唯一的不同就是传递的参数不同，call 只能一个参数一个参数的传入。
+- apply 则只支持传入一个数组，哪怕是一个参数也要是数组形式。最终调用函数时候这个数组会拆成一个个参数分别传入。
+- 至于 bind 方法，他是直接改变这个函数的 this 指向并且返回一个新的函数，之后再次调用这个函数的时候 this 都是指向 bind 绑定的第一个参数。
+- bind 传参方式跟 call 方法一致。
+
+适用场景：
+
+求一个数组中最大或者最小值
+
+```js
+// 如果一个数组我们已知里面全都是数字，想要知道最大的那个数，由于 Array 没有 max 方法，Math 对象上有
+// 我们可以根据 apply 传递参数的特性将这个数组当成参数传入
+// 最终 Math.max 函数调用的时候会将 apply 的数组里面的参数一个一个传入，恰好符合 Math.max 的参数传递方式
+// 这样变相的实现了数组的 max 方法。min 方法也同理
+const arr = [1,2,3,4,5,6]
+const max = Math.max.apply(null, arr)
+console.log(max)    // 6
+```
+
+参数都会排在之后
+
+```js
+// 如果你想将某个函数绑定新的`this`指向并且固定先传入几个变量可以在绑定的时候就传入，之后调用新函数传入的参数都会排在之后
+const obj = {}
+function test(...args) { console.log(args) }
+const newFn = test.bind(obj, '静态参数1', '静态参数2')
+newFn('动态参数3', '动态参数4')
+```
+
+利用 call 和 apply 做继承
+
+```js
+function Animal(name){
+  this.name = name;
+  this.showName = function(){
+    console.log(this.name);
+  }
+}
+
+function Cat(name){
+  Animal.call(this, name);
+}
+
+// Animal.call(this) 的意思就是使用 this 对象代替 Animal 对象，那么
+// Cat 中不就有 Animal 的所有属性和方法了吗，Cat 对象就能够直接调用 Animal 的方法以及属性了
+var cat = new Cat("TONY");
+cat.showName(); //TONY
+```
+
+将伪数组转化为数组（含有 length 属性的对象，dom 节点, 函数的参数 arguments）
+
+```js
+// case1: dom节点：
+<div class="div1">1</div>
+<div class="div1">2</div>
+<div class="div1">3</div>
+
+let div = document.getElementsByTagName('div');
+console.log(div); // HTMLCollection(3) [div.div1, div.div1, div.div1] 里面包含length属性
+let arr2 = Array.prototype.slice.call(div);
+console.log(arr2); // 数组 [div.div1, div.div1, div.div1]
+
+
+//case2：fn 内的 arguments
+function fn10() {
+    return Array.prototype.slice.call(arguments);
+}
+console.log(fn10(1,2,3,4,5)); // [1, 2, 3, 4, 5]
+
+
+// case3: 含有 length 属性的对象
+let obj4 = {
+    0: 1,
+    1: 'thomas',
+    2: 13,
+    length: 3 // 一定要有length属性
+};
+console.log(Array.prototype.slice.call(obj4)); // [1, "thomas", 13]
+```
+
+判断变量类型
+
+```js
+let arr1 = [1,2,3];
+let str1 = 'string';
+let obj1 = { name: 'thomas' };
+//
+function isArray(obj) {
+  return Object.prototype.toString.call(obj) === '[object Array]';
+}
+console.log(fn1(arr1)); // true
+
+// 判断类型的方式，这个最常用语判断 array 和 object ，null( 因为 typeof null 等于 object )
+console.log(Object.prototype.toString.call(arr1)); // [object Array]
+console.log(Object.prototype.toString.call(str1)); // [object String]
+console.log(Object.prototype.toString.call(obj1)); // [object Object]
+console.log(Object.prototype.toString.call(null)); // [object Null]
+```
+
+总结：
+
+1. 当我们使用一个函数需要改变 this 指向的时候才会用到 `call` `apply` `bind`
+2. 如果你要传递的参数不多，则可以使用 fn.call(thisObj, arg1, arg2 ...)
+3. 如果你要传递的参数很多，则可以用数组将参数整理好调用 fn.apply(thisObj, [arg1, arg2 ...])
+4. 如果你想生成一个新的函数长期绑定某个函数给某个对象使用，则可以使用 const newFn = fn.bind(thisObj); newFn(arg1, arg2...)
+
+参考文章：
+
+- [call、apply、bind 的区别](https://www.jianshu.com/p/bbeadae6127e)
+- [聊一聊 call、apply、bind 的区别](https://segmentfault.com/a/1190000012772040)
+
+
+---
+
+[理解 js 继承的 6 种方式](https://www.cnblogs.com/Grace-zyy/p/8206002.html)
 
 ---
 
@@ -1611,7 +1806,7 @@ eval() 函数可计算某个字符串，并执行其中的的 JavaScript 代码�
 
 ```javascript
 var add = function (x, r) {
-	if (arguments.length == 1) {
+	if (arguments.length === 1) {
 		return function (y) { return x + y; };
 	} else {
 		return x + r;
@@ -1838,7 +2033,9 @@ alert(typeof value);    //"number"
 
 该 value 赋值以后，变量赋值初始化就覆盖了函数声明。
 
-重新回到题目，这个函数其实是一个有名函数表达式，函数表达式不像函数声明一样可以覆盖变量声明，但你可以注意到，变量 b 是包含了该函数表达式，而该函数表达式的名字是 a。不同的浏览器对 a 这个名词处理有点不一样，在 IE 里，会将 a 认为函数声明，所以它被变量初始化覆盖了，就是说如果调用 a(–x) 的话就会出错，而其它浏览器在允许在函数内部调用 a(–x)，因为这时候 a 在函数外面依然是数字。
+重新回到题目，这个函数其实是一个有名函数表达式，函数表达式不像函数声明一样可以覆盖变量声明，但你可以注意到，变量 b 是包含了该函数表达式，而该函数表达式的名字是 a。
+
+不同的浏览器对 a 这个名词处理有点不一样，在 IE 里，会将 a 认为函数声明，所以它被变量初始化覆盖了，就是说如果调用 a(–x) 的话就会出错，而其它浏览器在允许在函数内部调用 a(–x)，因为这时候 a 在函数外面依然是数字。
 基本上，IE 里调用 b(2) 的时候会出错，但其它浏览器则返回 undefined。
 
 理解上述内容之后，该题目换成一个更准确和更容易理解的代码应该像这样：
@@ -1941,19 +2138,6 @@ arr[3]();
 
 ---
 
-**JavaScript 里有哪些数据类型**
-
-一、数据类型   
-
-- undefiend 没有定义数据类型        
-- number 数值数据类型，例如 10 或者 1 或者 5.5        
-- string 字符串数据类型用来描述文本，例如  "你的姓名"        
-- boolean 布尔类型 true | false ，不是正就是反        
-- object 对象类型，复杂的一组描述信息的集合
-- function 函数类型
-
----
-
 **解释清楚 null 和 undefined**
 
 null 用来表示尚未存在的对象，常用来表示函数企图返回一个不存在的对象。  null 表示"没有对象"，即该处不应该有值。
@@ -1981,6 +2165,79 @@ null 典型用法是： 
 **讲一下 prototype 是什么东西，原型链的理解，什么时候用 prototype ？**
 
 prototype 是函数对象上面预设的对象属性。
+
+---
+
+**实现 add(1)(2)(3) = 6**
+
+这题考察的是柯里化,做这题之前呢,我们得知道柯里化的概念:
+
+柯里化就是把接收多个参数的函数变换成接收一个单一参数(最初函数的第一个参数)的函数。
+
+```js
+const curry = (fn, ...args) => 
+            args.length < fn.length 
+            // 参数长度不足时,重新柯里化函数,等待接受新参数
+            ? (...arguments) => curry(fn, ...args, ...arguments)
+            // 函数长度满足时,执行函数
+             : fn(...args);
+
+function sumFn(a, b, c){
+    return a + b + c;
+}
+var sum = curry(sumFn);
+console.log(sum(1)(2)(3)); //6
+```
+
+---
+
+**script 标签的 defer 和 async**
+
+
+- 一个普通的 `<script>` 标签的加载和解析都是同步的，会阻塞 DOM 的渲染，这也就是我们经常会把 `<script>` 写在 `<body>`底部的原因之一，为了防止加载资源而导致的长时间的白屏。
+- 另一个原因是 js 可能会进行 DOM 操作，所以要在 DOM 全部渲染完后再执行。
+
+
+defer
+
+```
+如果 script 标签设置了该属性，则浏览器会异步的下载该文件并且不会影响到后续 DOM 的渲染；
+如果有多个设置了 defer 的 script 标签存在，则会按照顺序执行所有的 script；
+defer 脚本会在文档渲染完毕后，DOMContentLoaded 事件调用前执行。
+```
+
+async
+
+```
+async 的设置，会使得 script 脚本异步的加载并在允许的情况下执行 async 的执行，
+并不会按着 script 在页面中的顺序来执行，而是谁先加载完谁执行。
+```
+
+- 概括来讲，就是这两个属性都会使 script 标签异步加载，然而执行的时机是不一样的。
+- 也就是说 async 是乱序的，而 defer 是顺序执行，这也就决定了async 比较适用于百度分析或者谷歌分析这类不依赖其他脚本的库。
+
+
+推荐的应用场景
+
+defer
+
+如果你的脚本代码依赖于页面中的 DOM 元素（文档是否解析完毕），或者被其他脚本文件依赖。
+
+例：
+
+- 评论框
+- 代码语法高亮
+- polyfill.js
+
+async
+
+如果你的脚本并不关心页面中的 DOM 元素（文档是否解析完毕），并且也不会产生其他脚本需要的数据。
+
+例：百度统计
+
+如果不太能确定的话，用 defer 总是会比 async 稳定。。。
+
+参考：[浅谈 script 标签中的 async 和 defer](https://www.cnblogs.com/jiasm/p/7683930.html)
 
 ---
 
@@ -2828,6 +3085,7 @@ var getDataType = function(o){
     }
 };
 ```
+
 ---
 
 **ES5 的继承和 ES6 的继承有什么区别 ？**
@@ -2840,6 +3098,15 @@ ES5 的继承时通过 prototype 或构造函数机制来实现。
 具体的：ES6 通过 class 关键字定义类，里面有构造方法，类之间通过 extends 关键字实现继承。子类必须在 constructor 方法中调用 super 方法，否则新建实例报错。因为子类没有自己的 this 对象，而是继承了父类的 this 对象，然后对其进行加工。如果不调用 super 方法，子类得不到 this 对象。
 
 ps：super 关键字指代父类的实例，即父类的 this 对象。在子类构造函数中，调用 super 后，才可使用 this 关键字，否则报错。
+
+---
+
+**JS 中数据类型的判断 typeof，instanceof，constructor，Object.prototype.toString.call() 的区别**
+
+参考文章：
+
+1. [JS 中数据类型的判断](https://blog.csdn.net/zjy_android_blog/article/details/81023177)
+2. [JS类型判断---typeof, constructor, instanceof, toString](https://juejin.im/post/5d99b56f518825222b5b6737)
 
 ---
 
@@ -2878,6 +3145,7 @@ let b = [...str].reverse().join(""); // drow olleh
 
 #### js 经典面试知识文章
 
+- [js 异步执行顺序](https://www.cnblogs.com/xiaozhumaopao/p/11066005.html)
 - [JS 是单线程，你了解其运行机制吗 ？](https://github.com/biaochenxuying/blog/issues/8)
 - [7 分钟理解 JS 的节流、防抖及使用场景](https://juejin.im/post/5b8de829f265da43623c4261)
 - [JavaScript 常见的六种继承方式](https://juejin.im/post/5bb091a7e51d450e8477d9ba)
@@ -2890,11 +3158,23 @@ let b = [...str].reverse().join(""); // drow olleh
 - [你不知道的浏览器页面渲染机制](https://juejin.im/post/5ca0c0abe51d4553a942c17d)
 - [JavaScript设计模式](https://juejin.im/post/59df4f74f265da430f311909)
 - [深入 javascript——构造函数和原型对象](https://segmentfault.com/a/1190000000602050)
+- [高级函数技巧-函数柯里化](https://segmentfault.com/a/1190000018265172)
+- [JavaScript之bind及bind的模拟实现](https://blog.csdn.net/c__dreamer/article/details/79673725)
+- [Http Cookie 机制及 Cookie 的实现原理](https://blog.csdn.net/aa5305123/article/details/83247041)
+- [一个dom,点击事件触发两个事件是同步还是异步](https://blog.csdn.net/u012129607/article/details/78117483)
+- [16种JavaScript设计模式（中）](https://juejin.im/post/5c038df96fb9a04a0378f600)
 
 ---
 
 
 ## 5. ES6 +
+
+**ES6 函数默认参数和 es5 的实现有什么区别 ？es6 中又有什么需要注意的 ？**
+
+[ES6函数默认参数](https://www.jianshu.com/p/e4ea0d43529c)
+
+---
+
 
 **ES6 声明变量的六种方法**
 
@@ -3052,6 +3332,13 @@ document.addEventListener('scroll', better_scroll)
 #### ES6+ 面试知识文章
 
 - [那些必会用到的 ES6 精粹](https://github.com/biaochenxuying/blog/issues/1)
+- [promise、Generator 函数、async 函数的区别与理解](https://blog.csdn.net/deng1456694385/article/details/83831931)
+- [Typescript 中的 interface 和 type 到底有什么区别](https://blog.csdn.net/weixin_33724659/article/details/88040828)
+- [进大厂必会 20 道 JS 原理题](https://github.com/Geek-James/Blog/issues/27)
+- [AST 抽象语法树——最基础的 javascript 重点知识，99% 的人根本不了解](https://segmentfault.com/a/1190000016231512)
+
+
+---
 
 ## 6. webpack
 
@@ -3093,6 +3380,11 @@ webpack 从构建到输出文件结果的过程
 - 在递归每个文件的过程中，根据文件类型和配置文件中 loader 找出相对应的 loader 对文件进行转换
 - 递归结束之后得到每个文件最终的结果，根据 entry 配置生成代码 chunk
 - 输出所有 chunk 到文件系统
+
+---
+
+- [webpack 系列--浅析 webpack 的原理](https://www.cnblogs.com/chengxs/p/11022842.html)
+- [一看就懂之 webpack 原理解析与实现一个简单的 webpack](https://segmentfault.com/a/1190000020353337)
 
 ---
 
@@ -3225,6 +3517,10 @@ patch(root, patches)
 
 ---
 
+- [深度剖析：如何实现一个 Virtual DOM 算法](https://segmentfault.com/a/1190000004029168)
+- [virtual-dom(Vue实现)简析](https://segmentfault.com/a/1190000010090659)
+___
+
 **非父子组件如何通信 ？**
 
 Vue 官网介绍了非父子组件通信方法：
@@ -3321,8 +3617,10 @@ Vuex
 - [1. Vue 生命周期](https://www.jianshu.com/p/304a44f7c11b)
 - [2. 详解 Vue 生命周期](https://segmentfault.com/a/1190000011381906)
 - [3. Vue 组件间通信六种方式（完整版）](https://juejin.im/post/5cde0b43f265da03867e78d3)
-- [4. Vue 学习笔记-实现一个分页组件](https://www.jianshu.com/p/d17d8e35deda)
-
+- [4. Vue 组件之间 8 种组件通信方式总结](https://blog.csdn.net/zhoulu001/article/details/79548350)
+- [5. Vue 学习笔记-实现一个分页组件](https://www.jianshu.com/p/d17d8e35deda)
+- [6. 30 道 Vue 面试题，内含详细讲解（涵盖入门到精通，自测 Vue 掌握程度）](https://www.jianshu.com/p/b1564296a78b)
+- [7. Vue 生命周期和详细的执行过程](https://blog.csdn.net/qq_38021852/article/details/88640807)
 
 ## 8. React
 
@@ -3536,6 +3834,14 @@ HTTP 协议
 - 它安全性更高，客户端支持防御 XSRF
 
 ---
+
+
+相关文章：
+
+- [TCP 协议和 UDP 协议的特点和区别](https://blog.csdn.net/lzj2504476514/article/details/81454754)
+- [(纯干货)HTTP／1.0／1.1／2.0的区别以及http和https的区别](https://www.cnblogs.com/NightTiger/p/11334314.html)
+- [http & https & http2.0](https://www.cnblogs.com/colima/p/7295771.html)
+
 
 
 ## 11. 数据结构与算法
@@ -3963,6 +4269,10 @@ function findMaxDuplicateChar(str) {
 
 ---
 
+- [查找两个不同元素最近的父节点](https://blog.csdn.net/hhthwx/article/details/79784205)
+
+---
+
 #### JavaScript 数据结构
 
 - [JavaScript 数据结构与算法之美 - 线性表（数组、栈、队列、链表）](https://juejin.im/post/5d187b81e51d4550a629b2c5)
@@ -3985,9 +4295,6 @@ function findMaxDuplicateChar(str) {
 
 技术博客首发地址  [GitHub](https://github.com/biaochenxuying/blog)。
 
-觉得有用 ？那就收藏，点个赞，顺便关注我的公众号吧 ！
-
-![全栈修炼](https://upload-images.jianshu.io/upload_images/12890819-63562882740bae76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 
